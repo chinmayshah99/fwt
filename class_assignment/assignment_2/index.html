@@ -10,62 +10,74 @@
 <br>
 	<input type="button" name="submit" value="Click" onClick="clic(this);">
 </form>
-<p id="nn" style="font-size: 50px; font-family: Bradley Hand; align: center;"></p>
+<p id="new_name" style="font-size: 50px; font-family: Bradley Hand; align: center;"></p>
 <script type="text/javascript"> 
+
+// regulat names
 function regular(name) {
- let nameY = name.slice(1);
- return "" + name + ", " + name + ", " + "bo-b" + nameY +
+    let nameY = name.slice(1);
+    return "" + name + ", " + name + ", " + "bo-b" + nameY +
       "\n<br>Banana-fana fo-f" + nameY +
         "\n<br>Fee-fi-mo-m" + nameY +"\n<br>"+
         name + "!";
 }
+
+// names starting with b,f,m
 function bffm(name) {
- let nameY = name.slice(1);
- if (name.charAt(0)=='B'){
- 	return "" + name + ", " + name + ", " + "bo-" + nameY +
+    let nameY = name.slice(1);
+
+    if (name.charAt(0)=='B'){
+    	return "" + name + ", " + name + ", " + "bo-" + nameY +
     	  "\n<br>Banana-fana fo-f" + nameY +
         	"\n<br>Fee-fi-mo-m" + nameY +"\n<br>"+
         	name + "!";
        }
-else if (name.charAt(0)=='F'){
-	return "" + name + ", " + name + ", " + "bo-b" + nameY +
+
+    else if (name.charAt(0)=='F'){
+    return "" + name + ", " + name + ", " + "bo-b" + nameY +
     	  "\n<br>Banana-fana fo-" + nameY +
         	"\n<br>Fee-fi-mo-m" + nameY +"\n<br>"
         	name + "!";
-}
-else{
-	return "" + name + ", " + name + ", " + "bo-b" + nameY +
+    }
+
+    else{
+    return "" + name + ", " + name + ", " + "bo-b" + nameY +
     	  "\n<br>Banana-fana fo-f" + nameY +
         	"\n<br>Fee-fi-mo-" + nameY +"\n<br>"
         	name + "!";
+    }
 }
-}
+
+// names starting with vowels
 function vowel(name) {
- let nameY = name.slice(1);
- let low=namey.toLowerCase();
- return "" + name + ", " + name + ", " + "bo-b" + low +
+    let nameY = name.slice(1);
+    let low=namey.toLowerCase();
+    return "" + name + ", " + name + ", " + "bo-b" + low +
       "\n<br>Banana-fana fo-f" + low +
         "\n<br>Fee-fi-mo-m" + low +"\n<br>"
         name + "!";
 }
-function clic(argument) {
-	// body...
-	let name = oForm.elements["name"].value;
-	console.log(name);
-let nick="";
-let vow=['a','e','i','o','u'];
-let bfm=['b','f','m'];
-console.log(vow.includes(name.charAt(0)))
-if(vow.includes(name.charAt(0).toLowerCase()))
-	nick=vowel(name);
-else if(vow.includes(name.charAt(0).toLowerCase()))
-	nick=bffm(name);
-else
-	nick=regular(name);
-console.log(nick);
-document.getElementById("nn").innerHTML=nick;
-	}	
 
+function clic(argument) {
+	let name = oForm.elements["name"].value;
+    name = name.toLowerCase();
+    name = name.charAt(0).toUpperCase() + name.slice(1)
+	console.log(name);
+    let nick="";
+    let vow=['a','e','i','o','u'];
+    let bfm=['b','f','m'];
+    console.log(vow.includes(name.charAt(0)))
+    
+    if(vow.includes(name.charAt(0)))
+    	nick=vowel(name);
+    else if(vow.includes(name.charAt(0)))
+    	nick=bffm(name);
+    else
+    	nick=regular(name);
+
+    console.log(nick);
+    document.getElementById("new_name").innerHTML=nick;
+}	
 
 </script>
 
