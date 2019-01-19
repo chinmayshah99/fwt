@@ -5,16 +5,17 @@
 </head>
 <body bgcolor="lightgray">
 
-<form id="oForm" >
-	Enter your Name:<input type="text" name="name" id="txt_name" size="30" maxlength="70" 
-                        onkeydown = "if (event.keyCode == 13){
-                            document.getElementById('submit').click(); event.returnValue=false; event.cancel=true;}">
-                        
-                        
-<br>
-	<input type="button" id = "submit" name="submit" value="Click" onClick="clic(this);">
-</form>
-<p id="new_name" style="font-size: 50px; font-family: Bradley Hand; align: center;"></p>
+<div style="width: 1200px; padding: 40px;">
+    <form id="oForm" >
+        Enter your Name:<input type="text" name="name" id="txt_name" size="30" maxlength="70" 
+                            onkeydown = "if (event.keyCode == 13){
+                                document.getElementById('submit').click(); event.returnValue=false; event.cancel=true;}">                            
+    <br>
+        <input type="button" id = "submit" name="submit" value="Click" onClick="clic(this);">
+    </form>
+    
+    <p id="new_name" style="font-size: 50px; font-family: Bradley Hand; align: center;"></p>
+</div>
 <script type="text/javascript"> 
 
 // regulat names
@@ -67,6 +68,7 @@ function clic(argument) {
     name = name.toLowerCase();
     name = name.charAt(0).toUpperCase() + name.slice(1)
 	console.log(name);
+    if (name!="") {
     let nick="";
     let vow=['a','e','i','o','u'];
     let bfm=['b','f','m'];
@@ -80,7 +82,10 @@ function clic(argument) {
     	nick=regular(name);
 
     console.log(nick);
-    document.getElementById("new_name").innerHTML=nick;
+    }else{
+        nick="Sorry!<br>You need to enter your name first!🤦🏼‍♂😒"
+    }
+    document.getElementById("new_name").innerHTML=nick;   
 }
 
 </script>
