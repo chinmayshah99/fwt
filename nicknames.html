@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Strings</title>
+</head>
+<body bgcolor="lightgray">
+
+<div style="width: 1200px; padding: 40px;">
+<form id="oForm" >
+	Enter your Name:<input type="text" name="name" id="txt_name" size="30" maxlength="70" 
+                        onkeydown = "if (event.keyCode == 13){
+                            document.getElementById('submit').click(); event.returnValue=false; event.cancel=true;}">
+                        
+                        
+<br>
+	<input type="button" id = "submit" name="submit" value="Click" onClick="clic(this);">
+</form>
+<p id="new_name" style="font-size: 50px; font-family: Bradley Hand; align: center;"></p></div>
+<script type="text/javascript"> 
+// regulat names
+function regular(name) {
+    let nameY = name.slice(1);
+    return "" + name + ", " + name + ", " + "bo-b" + nameY +
+      "\n<br>Banana-fana fo-f" + nameY +
+        "\n<br>Fee-fi-mo-m" + nameY +"\n<br>"+
+        name + "!";
+}
+// names starting with b,f,m
+function bffm(name) {
+    let nameY = name.slice(1);
+    if (name.charAt(0)=='B'){
+    	return "" + name + ", " + name + ", " + "bo-" + nameY +
+    	  "\n<br>Banana-fana fo-f" + nameY +
+        	"\n<br>Fee-fi-mo-m" + nameY +"\n<br>"+
+        	name + "!";
+       }
+    else if (name.charAt(0)=='F'){
+    return "" + name + ", " + name + ", " + "bo-b" + nameY +
+    	  "\n<br>Banana-fana fo-" + nameY +
+        	"\n<br>Fee-fi-mo-m" + nameY +"\n<br>"
+        	name + "!";
+    }
+    else{
+    return "" + name + ", " + name + ", " + "bo-b" + nameY +
+    	  "\n<br>Banana-fana fo-f" + nameY +
+        	"\n<br>Fee-fi-mo-" + nameY +"\n<br>"
+        	name + "!";
+    }
+}
+// names starting with vowels
+function vowel(name) {
+    let nameY = name.slice(1);
+    let low=namey.toLowerCase();
+    return "" + name + ", " + name + ", " + "bo-b" + low +
+      "\n<br>Banana-fana fo-f" + low +
+        "\n<br>Fee-fi-mo-m" + low +"\n<br>"
+        name + "!";
+}
+function clic(argument) {
+	let name = oForm.elements["name"].value;
+    name = name.toLowerCase();
+    name = name.charAt(0).toUpperCase() + name.slice(1)
+    if (name!="") {
+	console.log(name);
+    let nick="";
+    let vow=['a','e','i','o','u'];
+    let bfm=['b','f','m'];
+    console.log(vow.includes(name.charAt(0)))
+    
+    if(vow.includes(name.charAt(0)))
+    	nick=vowel(name);
+    else if(vow.includes(name.charAt(0)))
+    	nick=bffm(name);
+    else
+    	nick=regular(name);
+    console.log(nick);
+    document.getElementById("new_name").innerHTML=nick;}
+    else{
+        nick="Sorry!<br>You need to enter your name first!🤦🏼‍♂😒"
+        document.getElementById("new_name").innerHTML=nick;   
+    }
+}
+</script>
+
+</body>
+</html>
