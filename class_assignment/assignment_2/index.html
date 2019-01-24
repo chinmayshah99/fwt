@@ -69,15 +69,15 @@ function clic(argument) {
     name = name.charAt(0).toUpperCase() + name.slice(1)
 	console.log(name);
 	let nick="";
+    
     if (name!="") {
-
     let vow=['a','e','i','o','u'];
     let bfm=['b','f','m'];
     console.log(vow.includes(name.charAt(0)))
     
     if(vow.includes(name.charAt(0)))
     	nick=vowel(name);
-    else if(vow.includes(name.charAt(0)))
+    else if(bfm.includes(name.charAt(0)))
     	nick=bffm(name);
     else
     	nick=regular(name);
